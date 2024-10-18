@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bento Grid Game UI with Background Images and Popups</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Include the gamey font -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Left Half: Super Streak -->
+    <div class="left-half" onclick="navigateTo('superStreak')">
+      <div class="event-banner">New Event!</div>
+      <div class="super-streak-content">
+        <h1>Super Streak</h1>
+        <button onclick="playGame(event)">Play</button>
+      </div>
+    </div>
+
+    <!-- Right Half: Other Features -->
+    <div class="right-half">
+      <!-- Top Half: Player Avatar -->
+      <div class="top-half" onclick="navigateTo('playerProfile')">
+        <p>Level 10</p>
+        <div class="notification-badge" id="avatarNotifications" onclick="handleNotificationClick(event, 'avatar')">2</div>
+      </div>
+      <!-- Bottom Half: Two Boxes Side by Side -->
+      <div class="bottom-half">
+        <!-- Card Shop -->
+        <div class="bottom-box" onclick="navigateTo('shop')">
+          <p>Card Shop</p>
+          <div class="notification-badge" id="shopNotifications" onclick="handleNotificationClick(event, 'shop')">5</div>
+        </div>
+        <!-- Collection -->
+        <div class="bottom-box" onclick="navigateTo('collection')">
+          <p>Collection</p>
+          <div class="notification-badge" id="collectionNotifications" onclick="handleNotificationClick(event, 'collection')">3</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content">
+      <img src="assets/Close Icon.png" alt="Close" class="modal-close" onclick="closeModal(event)">
+      <div id="modalBody">
+        <!-- Dynamic content will be injected here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
