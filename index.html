@@ -2,38 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Bento Grid Game UI with Background Images and Popups</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bento Grid Game UI</title>
   <link rel="stylesheet" href="styles.css">
   <!-- Include the gamey font -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <!-- Left Half: Super Streak -->
-    <div class="left-half" onclick="navigateTo('superStreak')">
+    <!-- Left Half: Super Streak and World Rankings -->
+    <div class="left-half">
       <div class="event-banner">New Event!</div>
-      <div class="super-streak-content">
+
+      <!-- Super Streak Box -->
+      <div class="box super-streak" onclick="navigateTo('superStreak')" tabindex="0" onkeypress="handleKeyPress(event, 'superStreak')">
         <h1>Super Streak</h1>
         <button onclick="playGame(event)">Play</button>
       </div>
+
+      <!-- World Rankings Box -->
+      <div class="box world-rankings" onclick="navigateTo('worldRankings')" tabindex="0" onkeypress="handleKeyPress(event, 'worldRankings')">
+        <h2>World Rankings</h2>
+      </div>
     </div>
 
-    <!-- Right Half: Other Features -->
+    <!-- Right Half: Card Shop, Player Avatar, and Collection -->
     <div class="right-half">
-      <!-- Top Half: Player Avatar -->
-      <div class="top-half" onclick="navigateTo('playerProfile')">
-        <p>Level 10</p>
-        <div class="notification-badge" id="avatarNotifications" onclick="handleNotificationClick(event, 'avatar')">2</div>
+      <!-- Card Shop Box -->
+      <div class="box card-shop" onclick="navigateTo('shop')" tabindex="0" onkeypress="handleKeyPress(event, 'shop')">
+        <p>Card Shop</p>
+        <div class="notification-badge" id="shopNotifications" onclick="handleNotificationClick(event, 'shop')">2</div>
       </div>
-      <!-- Bottom Half: Two Boxes Side by Side -->
+
+      <!-- Player Avatar and Collection Boxes -->
       <div class="bottom-half">
-        <!-- Card Shop -->
-        <div class="bottom-box" onclick="navigateTo('shop')">
-          <p>Card Shop</p>
-          <div class="notification-badge" id="shopNotifications" onclick="handleNotificationClick(event, 'shop')">5</div>
+        <!-- Player Avatar Box -->
+        <div class="box player-avatar" onclick="navigateTo('playerProfile')" tabindex="0" onkeypress="handleKeyPress(event, 'playerProfile')">
+          <p>Player Avatar</p>
+          <div class="notification-badge" id="avatarNotifications" onclick="handleNotificationClick(event, 'avatar')">5</div>
         </div>
-        <!-- Collection -->
-        <div class="bottom-box" onclick="navigateTo('collection')">
+
+        <!-- Collection Box -->
+        <div class="box collection" onclick="navigateTo('collection')" tabindex="0" onkeypress="handleKeyPress(event, 'collection')">
           <p>Collection</p>
           <div class="notification-badge" id="collectionNotifications" onclick="handleNotificationClick(event, 'collection')">3</div>
         </div>
@@ -43,13 +53,16 @@
 
   <!-- Modal Structure -->
   <div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)">
-    <div class="modal-content">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="0">
       <img src="assets/Close Icon.png" alt="Close" class="modal-close" onclick="closeModal(event)">
       <div id="modalBody">
         <!-- Dynamic content will be injected here -->
       </div>
     </div>
   </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
 
   <script src="script.js"></script>
 </body>
