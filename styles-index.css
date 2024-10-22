@@ -1,0 +1,579 @@
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  background-color: #2b2b2b;
+  padding: 16px; /* Outer padding */
+}
+
+/* Common Box Styles */
+.box {
+  position: relative;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Left Half: Super Streak and World Rankings */
+.left-half {
+  flex: 5;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 16px;
+  padding: 16px;
+  margin-right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Space between Super Streak and World Rankings */
+}
+
+/* Event Banner */
+.event-banner {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background-color: rgba(255, 204, 0, 0.9);
+  color: #000000;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  z-index: 1;
+  font-size: 14px;
+}
+
+/* Super Streak Background */
+.super-streak-page {
+  background-image: url('assets/Background_Bar_Scene.png'); /* Update path if necessary */
+  background-size: cover; /* Ensure image covers the full background */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent background image repetition */
+  background-attachment: fixed; /* Parallax effect for background */
+  min-height: 100vh; /* Full height for the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Semi-transparent overlay to enhance readability */
+.super-streak-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Add overlay for better readability */
+  z-index: 0; /* Ensure overlay stays behind content */
+}
+
+/* Main container and content styles */
+.super-streak-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: calc(100vh - 60px); /* Adjust height considering nav-bar */
+  padding: 20px;
+  position: relative;
+  z-index: 1; /* Ensure content appears above the overlay */
+}
+
+.super-streak-game {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.super-streak-game h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffcc00; /* Accent color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.super-streak-game p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive Design for Super Streak Page */
+@media (max-width: 768px) {
+  .super-streak-page {
+    background-position: top;
+  }
+
+  .super-streak-game {
+    padding: 30px 10px;
+  }
+
+  .super-streak-game h2 {
+    font-size: 1.5rem;
+  }
+
+  .super-streak-game p {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* Super Streak Box */
+.super-streak {
+  flex: 2;
+  background-image: url('assets/Super_Streak.png');
+  background-size: cover; /* Ensures the image covers the entire box */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  position: relative;
+}
+
+.super-streak h1 {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.super-streak button {
+  background-color: #ff3b3b;
+  color: #ffffff;
+  border: none;
+  padding: 10px 30px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.super-streak button:hover {
+  background-color: #e33232;
+}
+
+/* World Rankings Box */
+.world-rankings {
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.world-rankings h2 {
+  font-size: 20px;
+  color: #ffcc00;
+  text-shadow:
+      0 0 10px rgba(255, 204, 0, 0.8),
+      0 0 20px rgba(255, 204, 0, 0.6),
+      0 0 30px rgba(255, 204, 0, 0.4);
+}
+
+/* Right Half: Card Shop, Player Avatar, and Collection */
+.right-half {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Space between Card Shop and Bottom Half */
+}
+
+/* Card Shop Box */
+.card-shop {
+  flex: 0.75; /* Take up 50% of the right half */
+  background-image: url('assets/Card_Shop.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  padding: 16px;
+  position: relative;
+  text-align: center;
+  min-height: 120px; /* Ensure consistent height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.card-shop p {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 500;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Bottom Half: Player Avatar and Collection */
+.bottom-half {
+  flex: 1; /* Take up the remaining 50% of the right half */
+  display: flex;
+  flex-direction: row;
+  gap: 16px; /* Increased space between Avatar and Collection */
+}
+
+/* Player Avatar Box */
+.player-avatar {
+  flex: 1; /* Take 50% of the bottom half */
+  background-image: url('assets/avatar.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  padding: 16px;
+  position: relative;
+  text-align: center;
+  min-height: 120px; /* Ensure consistent height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.player-avatar p {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 500;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Collection Box */
+.collection {
+  flex: 1; /* Take 50% of the bottom half */
+  background-image: url('assets/Collection.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  padding: 16px;
+  position: relative;
+  text-align: center;
+  min-height: 120px; /* Ensure consistent height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.collection p {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 500;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Notification Badges */
+.notification-badge {
+  position: absolute;
+  top: -8px; /* Adjusted to prevent overlap */
+  right: -8px; /* Adjusted to prevent overlap */
+  background-color: rgba(255, 204, 0, 0.9);
+  color: #000000;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.notification-badge:hover {
+  background-color: rgba(255, 204, 0, 1);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  /* Adjust for smaller screens */
+  .container {
+    flex-direction: column;
+    padding: 8px;
+  }
+
+  .left-half,
+  .right-half {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .left-half {
+    gap: 12px;
+  }
+
+  .super-streak h1 {
+    font-size: 20px;
+  }
+
+  .super-streak button {
+    font-size: 12px;
+    padding: 8px 20px;
+  }
+
+  .card-shop p,
+  .player-avatar p,
+  .collection p {
+    font-size: 16px;
+  }
+
+  .bottom-half {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* World Rankings Box */
+  .world-rankings h2 {
+    font-size: 18px;
+  }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background-color: #3c3c3c;
+  border-radius: 16px;
+  padding: 24px;
+  width: 90%; /* Adjusted for smaller screens */
+  max-width: 600px;
+  position: relative;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.7);
+  animation: pop-in 0.3s ease-out;
+}
+
+@keyframes pop-in {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  color: #ffcc00;
+  margin-bottom: 16px;
+}
+
+.modal-content p {
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.modal-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.modal-content ul li {
+  background-color: #4d4d4d;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.modal-content ul li img {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+
+.modal-content ul li span {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+/* Scrollbar styling for modal content */
+.modal-content {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2b2b2b;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffcc00;
+  border-radius: 4px;
+}
+
+/* Toast Notification */
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 16px;
+  position: fixed;
+  z-index: 20;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Main Content Container for Super Streak Page */
+.super-streak-container {
+  display: flex;
+  justify-content: space-around; /* Equal space around the boxes */
+  align-items: center;
+  height: calc(100vh - 60px); /* Adjust height considering nav-bar height */
+  padding: 20px;
+  background-color: #1e1e1e; /* Optional: Different background for distinction */
+}
+
+/* Sheps Super Streak Box */
+.super-streak-box,
+.streak-board-box {
+  background-color: #2e2e2e;
+  border: 2px solid #555555;
+  border-radius: 16px;
+  width: 40%; /* Adjust width as needed */
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+  position: relative;
+}
+
+.super-streak-box:hover,
+.streak-board-box:hover {
+  transform: translateY(-10px);
+  background-color: #3e3e3e;
+}
+
+.super-streak-box h2,
+.streak-board-box h2 {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #ffcc00;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.super-streak-box p,
+.streak-board-box p {
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.super-streak-box button,
+.streak-board-box button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.super-streak-box button:hover,
+.streak-board-box button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design for Super Streak Page */
+@media (max-width: 768px) {
+  .super-streak-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .super-streak-box,
+  .streak-board-box {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .super-streak-box h2,
+  .streak-board-box h2 {
+    font-size: 1rem;
+  }
+
+  .super-streak-box p,
+  .streak-board-box p {
+    font-size: 0.8rem;
+  }
+
+  .super-streak-box button,
+  .streak-board-box button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}

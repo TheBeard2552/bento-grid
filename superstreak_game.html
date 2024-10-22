@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Super Streak - Game Page</title>
+  <link rel="stylesheet" href="styles-super_streak.css">
+  <!-- Include the gamey font -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Wrapper with Background Image -->
+  <div class="super-streak-page"> <!-- Ensure class matches CSS -->
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+      <button class="back-button" data-destination="super_streak.html" aria-label="Go Back">Back</button>
+      <h1>Super Streak Game</h1>
+      <div style="width: 80px;"></div> <!-- Placeholder for alignment -->
+    </div>
+
+    <!-- Game Selection Screen -->
+    <div class="game-screen" id="game-selection-screen">
+      <h2>Select Your Games</h2>
+
+      <!-- Filters Section -->
+      <div class="filters">
+        <label><input type="checkbox" name="sport" value="NBA" checked> NBA</label>
+        <label><input type="checkbox" name="sport" value="NFL" checked> NFL</label>
+        <label><input type="checkbox" name="sport" value="MLB" checked> MLB</label>
+        <label><input type="checkbox" name="sport" value="EPL" checked> EPL</label>
+        <label><input type="checkbox" name="sport" value="NHL" checked> NHL</label>
+        <label><input type="checkbox" name="sport" value="NCAAB" checked> NCAAB</label>
+        <label><input type="checkbox" name="sport" value="NCAAF" checked> NCAAF</label>
+        <!-- Add more sports as needed -->
+      </div>
+
+      <!-- Search Bar -->
+      <input type="text" id="search-bar" placeholder="Search for games...">
+
+      <!-- Games List -->
+      <div id="games-list">
+        <!-- Dynamically populated games will appear here -->
+      </div>
+
+      <!-- Confirm Selection Button -->
+      <button id="confirm-selection">Confirm Selection</button>
+    </div>
+
+    <!-- Confirmation Screen -->
+    <div class="game-screen" id="confirmation-screen" style="display: none;">
+      <h2>Confirm Your Selection</h2>
+      <div id="selected-games-display">
+        <!-- Selected games will be displayed here -->
+      </div>
+      <button id="start-game">Start Game</button>
+      <button class="back-button" data-destination="super_streak.html" aria-label="Back to Super Streak">Back to Super Streak</button>
+    </div>
+
+    <!-- Game Execution Screen -->
+    <div class="game-screen" id="game-execution-screen" style="display: none;">
+      <h2>Game Results</h2>
+      <div id="game-results">
+        <!-- Game results will be displayed here -->
+      </div>
+      <button id="view-scoreboard">View Scoreboard</button>
+      <button class="back-button" data-destination="super_streak.html" aria-label="Back to Super Streak">Back to Super Streak</button>
+    </div>
+
+    <!-- Scoreboard Screen -->
+    <div class="game-screen" id="scoreboard-screen" style="display: none;">
+      <h2>Scoreboard</h2>
+      <div id="scoreboard">
+        <!-- Leaderboard will be displayed here -->
+      </div>
+      <button class="back-button" data-destination="super_streak.html" aria-label="Back to Super Streak">Back to Super Streak</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- JavaScript File -->
+  <script src="superstreak_game_script.js"></script>
+</body>
+</html>
